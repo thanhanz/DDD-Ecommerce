@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  ddd-ecommerce-app:
+    container_name: ddd-ecommerce-app
+    build:
+      context: ../
+      dockerfile: environment/Dockerfile
+    ports:
+      - '8080:8080'
+    networks:
+      - backend-network
+
+  postgres:
+    image: postgres:17
+    container_name: ddd-postgres
+    networks:
+      - backend-network
+    restart: always
+    environment:
+      POSTGRES_DB: ddd_ecommerce
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
