@@ -3,36 +3,37 @@ package com.thanhan.ecommerce.common.primitives;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+
 @EqualsAndHashCode
 @ToString
 public final class Money {
-    public static final Money ZERO = new Money(0.f);
 
-    private static final float MAXIMUM_VALUE = 1_000_000_000.0f; // 1 billion per Product
+    private static final BigDecimal MAXIMUM_VALUE = new BigDecimal(1_000_000_000); // 1 billion per Product
 
-    private final float money;
+    private final BigDecimal money;
 
-    public Money(float money) {
-        if (money < 0) {
+    public Money(BigDecimal money) {
+        if (money.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Money cannot be less than zero");
         }
 
-        if (money > MAXIMUM_VALUE) {
-            throw new IllegalArgumentException("Money cannot be greater than " + MAXIMUM_VALUE);
+        if (money.compareTo(MAXIMUM_VALUE) > 0) {
+            throw new IllegalArgumentException("Money cannot be greater than " + MAXIMUM_VALUE.floatValue());
         }
 
         this.money = money;
     }
 
     public Money add(Money money) {
-        return new Money(this.money + money.money);
+        return new Money(this.money.add(money.money));
     }
 
     public Money multiply(float multiplier) {
-        return new Money(this.money * multiplier);
+        return new Money(this.money.multiply(new BigDecimal(multiplier)));
     }
 
-    public float getValue() {
+    public BigDecimal value() {
         return money;
     }
 }
