@@ -10,7 +10,7 @@ import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.ProductEnti
 
 public class ProductMapper {
 
-    public Product toDomain(ProductEntity product) {
+    public static Product toDomain(ProductEntity product) {
         if (product == null) return null;
 
        Product productDomain = new Product(
@@ -27,7 +27,7 @@ public class ProductMapper {
         return productDomain;
     }
 
-    public ProductEntity toEntity(Product productDomain) {
+    public static ProductEntity toEntity(Product productDomain) {
         if (productDomain == null) return null;
 
         ProductEntity productEntity = new ProductEntity();

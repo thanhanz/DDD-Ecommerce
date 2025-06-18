@@ -1,17 +1,13 @@
-package com.thanhan.ecommerce.sales.domain.repository;
+package com.thanhan.ecommerce.sales.domain.service;
 
 import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.Product;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.ProductId;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface ProductRepository {
-    Product findById(ProductId id);
-    List<Product> findByCategoryId(CategoryId categoryId);
+public interface ProductDomanService {
 
-
-
+    Product getProductById(ProductId id);
+    List<Product> getProductsByCategoryId(CategoryId categoryId);
 }
