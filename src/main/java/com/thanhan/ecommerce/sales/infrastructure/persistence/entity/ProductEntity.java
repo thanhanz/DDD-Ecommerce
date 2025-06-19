@@ -3,12 +3,17 @@ package com.thanhan.ecommerce.sales.infrastructure.persistence.entity;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Title;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
-@Data
+@Setter
+@Getter
 public class ProductEntity {
 
     @Id
@@ -27,8 +32,13 @@ public class ProductEntity {
 //    @Column(name = "price_currency")
 //    private String priceCurrency;
 
-    @Column(name = "category_id")
-    private String categoryId;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "products_categories",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<CategoryEntity> categories = new HashSet<>();
 
 }
 

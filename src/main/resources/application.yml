@@ -8,5 +8,9 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # application.yml
+    hibernate:
+      ddl-auto: update
+
 server:
   port: 8080

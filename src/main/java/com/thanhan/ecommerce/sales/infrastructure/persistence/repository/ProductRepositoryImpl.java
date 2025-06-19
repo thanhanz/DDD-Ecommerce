@@ -1,21 +1,18 @@
 package com.thanhan.ecommerce.sales.infrastructure.persistence.repository;
 
-import com.thanhan.ecommerce.common.primitives.Money;
 import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.Uri;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.Product;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Description;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.ProductId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Title;
-import com.thanhan.ecommerce.sales.domain.repository.ProductRepository;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.ProductJPAMapper;
+import com.thanhan.ecommerce.sales.domain.model.catalog.product.repository.ProductRepository;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.ProductJpaRepository;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.ProductMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -24,21 +21,38 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ProductRepositoryImpl implements ProductRepository {
 
-    private final ProductJPAMapper productJPAMapper;
+    private final ProductJpaRepository productJpaRepository;
 
     @Override
     public Product findById(ProductId id) {
-        return productJPAMapper.findById(id.value())
+        return productJpaRepository.findById(id.value())
                 .map(ProductMapper::toDomain)
-                .orElse(null);
-//        .orElseThrow(() -> new EntityNotFoundException("Product is not exist!!"));
+                .orElseThrow(() -> new EntityNotFoundException("Product in database is not exist!!"));
+    }
+
+//    @Override
+//    public List<Product> findByCategoryId(CategoryId categoryId) {
+//        return productJpaRepository.findByCategories_Id(categoryId.value())
+//                .stream()
+//                .map(ProductMapper::toDomain)
+//                .collect(Collectors.toList());
+//    }
+
+    @Override
+    public List<Product> findByUri(Uri categoryUri) {
+        return productJpaRepository.findByCategoryUri(categoryUri.value())
+                .stream()
+                .map(ProductMapper::toDomain)
+                .toList();
     }
 
     @Override
-    public List<Product> findByCategoryId(CategoryId categoryId) {
-        return productJPAMapper.findByCategoryId(categoryId.value())
-                .stream()
-                .map(ProductMapper::toDomain)
-                .collect(Collectors.toList());
+    public void save(Product product) {
+        productJpaRepository.save(ProductMapper.toEntity(product));
+    }
+
+    @Override
+    public void delete(Product product) {
+        productJpaRepository.delete(ProductMapper.toEntity(product));
     }
 }

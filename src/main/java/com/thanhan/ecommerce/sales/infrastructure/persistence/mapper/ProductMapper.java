@@ -8,6 +8,8 @@ import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Prod
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Title;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.ProductEntity;
 
+import java.util.stream.Collectors;
+
 public class ProductMapper {
 
     public static Product toDomain(ProductEntity product) {
@@ -20,8 +22,10 @@ public class ProductMapper {
                 new Money(product.getPriceAmount())
        );
 
-        if (product.getCategoryId() != null) {
-            productDomain.categorize(new CategoryId(product.getCategoryId()));
+        if (product.getCategories() != null) {
+            product.getCategories()
+                    .stream().map(c -> new CategoryId(String.valueOf(c.getId())))
+                    .collect(Collectors.toSet());
         }
 
         return productDomain;
@@ -35,10 +39,6 @@ public class ProductMapper {
         productEntity.setTitle(productDomain.getTitle().value());
         productEntity.setDescription(productDomain.getDescription().value());
         productEntity.setPriceAmount(productDomain.getPrice().value());
-
-        if (productDomain.getCategoryId() != null) {
-            productEntity.setCategoryId(productDomain.getCategoryId().value());
-        }
 
         return productEntity;
     }

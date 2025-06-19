@@ -6,21 +6,18 @@ import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Desc
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.ProductId;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Title;
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@Setter
 public class Product {
 
     private final ProductId id;
     private Title title;
     private Description description;
     private Money price;
-    private CategoryId categoryId;
+    private Set<CategoryId> categories;
 
     public Product(ProductId id, Title title, Description description, Money price) {
         this.id = id;
@@ -29,8 +26,8 @@ public class Product {
         this.price = price;
     }
 
-    public static Product create(@NonNull ProductId id, Title title, Description description, Money price) {
-        return new Product(id, title, description, price);
+    public static Product create(Title title, Description description, Money price) {
+        return new Product(ProductId.generate(), title, description, price);
     }
 
     public void changeTitle(Title newTitle) {
@@ -58,10 +55,9 @@ public class Product {
         if (categoryId == null || categoryId.value().isBlank()) {
             throw new IllegalArgumentException("CategoryId cannot be null or empty");
         }
-        this.categoryId = categoryId;
+        if (categories == null) {
+            categories = new HashSet<>();
+        }
+        categories.add(categoryId);
     }
-
-
-
-
 }
