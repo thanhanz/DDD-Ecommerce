@@ -1,11 +1,11 @@
 package com.thanhan.ecommerce.sales.infrastructure.persistence.mapper;
 
 import com.thanhan.ecommerce.common.primitives.Money;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.CategoryId;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.Product;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Description;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.ProductId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Title;
+import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.Description;
+import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.ProductId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.Title;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.ProductEntity;
 
 import java.util.stream.Collectors;

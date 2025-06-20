@@ -1,9 +1,9 @@
 package com.thanhan.ecommerce.sales.infrastructure.persistence.mapper;
 
 import com.thanhan.ecommerce.sales.domain.model.catalog.category.Category;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.Title;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.Uri;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.CategoryId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.Title;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.Uri;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.CategoryEntity;
 
 public class CategoryMapper {

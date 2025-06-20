@@ -1,4 +1,4 @@
-package com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject;
+package com.thanhan.ecommerce.sales.domain.model.catalog.category.vo;
 
 import lombok.NonNull;
 

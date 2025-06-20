@@ -1,10 +1,11 @@
-package com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject;
+package com.thanhan.ecommerce.sales.domain.model.cart.item;
 
 import lombok.NonNull;
 
 import java.util.UUID;
 
 public class ProductId {
+
 
     private final @NonNull String id;
 
@@ -22,5 +23,4 @@ public class ProductId {
     public String value() {
         return id;
     }
-
 }

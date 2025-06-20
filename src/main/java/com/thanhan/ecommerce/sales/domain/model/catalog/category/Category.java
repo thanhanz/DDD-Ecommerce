@@ -1,9 +1,8 @@
 package com.thanhan.ecommerce.sales.domain.model.catalog.category;
 
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.Title;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.Uri;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Description;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.CategoryId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.Title;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.Uri;
 import lombok.Getter;
 
 

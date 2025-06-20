@@ -1,7 +1,7 @@
 package com.thanhan.ecommerce.sales.domain.model.catalog.category.repository;
 
 import com.thanhan.ecommerce.sales.domain.model.catalog.category.Category;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.CategoryId;
 
 import java.util.List;
 

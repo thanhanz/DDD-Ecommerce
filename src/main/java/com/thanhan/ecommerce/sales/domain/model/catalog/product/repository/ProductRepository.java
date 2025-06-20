@@ -1,9 +1,8 @@
 package com.thanhan.ecommerce.sales.domain.model.catalog.product.repository;
 
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.Uri;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.Uri;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.Product;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.ProductId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.ProductId;
 
 import java.util.List;
 

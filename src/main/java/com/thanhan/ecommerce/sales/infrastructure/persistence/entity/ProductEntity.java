@@ -1,8 +1,6 @@
 package com.thanhan.ecommerce.sales.infrastructure.persistence.entity;
 
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.Title;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

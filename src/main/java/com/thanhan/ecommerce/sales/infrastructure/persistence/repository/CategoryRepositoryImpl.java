@@ -2,7 +2,7 @@ package com.thanhan.ecommerce.sales.infrastructure.persistence.repository;
 
 import com.thanhan.ecommerce.sales.domain.model.catalog.category.Category;
 import com.thanhan.ecommerce.sales.domain.model.catalog.category.repository.CategoryRepository;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.CategoryId;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.CategoryJpaRepository;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.CategoryMapper;
 import jakarta.persistence.EntityNotFoundException;

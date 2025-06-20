@@ -1,4 +1,4 @@
-package com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject;
+package com.thanhan.ecommerce.sales.domain.model.catalog.product.vo;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;

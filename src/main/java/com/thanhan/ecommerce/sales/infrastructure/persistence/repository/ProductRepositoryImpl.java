@@ -1,9 +1,8 @@
 package com.thanhan.ecommerce.sales.infrastructure.persistence.repository;
 
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.CategoryId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject.Uri;
+import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.Uri;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.Product;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.ProductId;
+import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.ProductId;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.repository.ProductRepository;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.ProductJpaRepository;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.ProductMapper;
@@ -13,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Repository

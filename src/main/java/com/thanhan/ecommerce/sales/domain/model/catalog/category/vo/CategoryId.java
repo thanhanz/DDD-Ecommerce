@@ -1,6 +1,5 @@
-package com.thanhan.ecommerce.sales.domain.model.catalog.category.valueObject;
+package com.thanhan.ecommerce.sales.domain.model.catalog.category.vo;
 
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.valueObject.ProductId;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
