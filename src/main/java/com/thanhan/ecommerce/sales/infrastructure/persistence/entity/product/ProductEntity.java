@@ -1,5 +1,6 @@
-package com.thanhan.ecommerce.sales.infrastructure.persistence.entity;
+package com.thanhan.ecommerce.sales.infrastructure.persistence.entity.product;
 
+import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.CategoryEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class ProductEntity {
     @Column(name = "price_amount")
     private BigDecimal priceAmount;
 
+
 //    @Column(name = "price_currency")
 //    private String priceCurrency;
 
@@ -38,5 +40,10 @@ public class ProductEntity {
     )
     private Set<CategoryEntity> categories = new HashSet<>();
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<ProductVariantEntity> variants = new HashSet<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<ProductVariantTypeEntity> types = new HashSet<>();
 }
 

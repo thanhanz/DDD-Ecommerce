@@ -2,14 +2,12 @@ package com.thanhan.ecommerce.sales.infrastructure.persistence.repository;
 
 import com.thanhan.ecommerce.sales.domain.model.cart.Cart;
 import com.thanhan.ecommerce.sales.domain.model.cart.repository.CartRepository;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.CartJpaRepository;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.jpa.CartJpaRepository;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.CartMapper;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor

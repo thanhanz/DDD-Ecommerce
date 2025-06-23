@@ -49,12 +49,12 @@ public class ProductAppServiceImpl implements ProductAppService {
         productRepository.save(newProduct);
     }
 
-    @Override
-    public void changePrice(String productId, BigDecimal price) {
-        Product product = productRepository.findById(new ProductId(productId));
-        product.changePrice(new Money(price));
-        productRepository.save(product);
-    }
+//    @Override
+//    public void changePrice(String productId, BigDecimal price) {
+//        Product product = productRepository.findById(new ProductId(productId));
+//        product.changePrice(new Money(price));
+//        productRepository.save(product);
+//    }
 
     @Override
     public void updateProduct(String productId, String title, String description) {

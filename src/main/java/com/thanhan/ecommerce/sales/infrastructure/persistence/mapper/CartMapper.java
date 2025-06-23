@@ -8,8 +8,8 @@ import com.thanhan.ecommerce.sales.domain.model.cart.item.ProductId;
 import com.thanhan.ecommerce.sales.domain.model.cart.item.Title;
 import com.thanhan.ecommerce.sales.domain.model.cart.vo.CartId;
 import com.thanhan.ecommerce.sales.domain.model.cart.vo.UserId;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.CartEntity;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.CartItemEntity;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.cart.CartEntity;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.cart.CartItemEntity;
 
 import java.time.Instant;
 import java.util.List;

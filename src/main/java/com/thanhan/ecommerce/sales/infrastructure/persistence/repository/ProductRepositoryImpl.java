@@ -4,7 +4,7 @@ import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.Uri;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.Product;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.ProductId;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.repository.ProductRepository;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.ProductJpaRepository;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.jpa.ProductJpaRepository;
 import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.ProductMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

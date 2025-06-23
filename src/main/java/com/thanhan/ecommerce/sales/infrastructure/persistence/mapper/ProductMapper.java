@@ -6,7 +6,7 @@ import com.thanhan.ecommerce.sales.domain.model.catalog.product.Product;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.Description;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.ProductId;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.Title;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.ProductEntity;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.entity.product.ProductEntity;
 
 import java.util.stream.Collectors;
 

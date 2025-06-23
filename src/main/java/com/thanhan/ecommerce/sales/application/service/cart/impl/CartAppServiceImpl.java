@@ -3,10 +3,9 @@ package com.thanhan.ecommerce.sales.application.service.cart.impl;
 import com.thanhan.ecommerce.common.primitives.Money;
 import com.thanhan.ecommerce.sales.application.service.cart.CartAppService;
 import com.thanhan.ecommerce.sales.domain.model.cart.Cart;
-import com.thanhan.ecommerce.sales.domain.model.cart.item.CartItem;
 import com.thanhan.ecommerce.sales.domain.model.cart.repository.CartRepository;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.CartItemJpaRepository;
-import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.CartJpaRepository;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.jpa.CartItemJpaRepository;
+import com.thanhan.ecommerce.sales.infrastructure.persistence.mapper.jpa.CartJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

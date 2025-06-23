@@ -16,7 +16,7 @@ public interface ProductAppService {
     List<ProductResponse> getProductsByCategoryId(String categoryId);
     List<ProductResponse> getProductsByCategoryUri(String uri);
     void create(String title, String description, BigDecimal price);
-    void changePrice(String productId, BigDecimal price);
+ //   void changePrice(String productId, BigDecimal price);
     void updateProduct(String productId, String title, String description);
     void delete(String productId);
     void unpublish(String productId);

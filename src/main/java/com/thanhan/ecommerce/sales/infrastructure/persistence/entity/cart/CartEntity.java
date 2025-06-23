@@ -1,4 +1,4 @@
-package com.thanhan.ecommerce.sales.infrastructure.persistence.entity;
+package com.thanhan.ecommerce.sales.infrastructure.persistence.entity.cart;
 import jakarta.persistence.*;
 import lombok.*;
 
