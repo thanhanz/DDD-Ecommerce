@@ -27,4 +27,8 @@ public final class Quantity {
         return new Quantity(this.quantity + other.getValue());
     }
 
+    public Quantity minus(Quantity other) {
+        return new Quantity(this.quantity - other.getValue());
+    }
+
 }

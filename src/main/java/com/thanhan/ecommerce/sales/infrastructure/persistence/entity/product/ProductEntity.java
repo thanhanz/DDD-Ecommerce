@@ -28,7 +28,6 @@ public class ProductEntity {
     @Column(name = "price_amount")
     private BigDecimal priceAmount;
 
-
 //    @Column(name = "price_currency")
 //    private String priceCurrency;
 
@@ -41,9 +40,6 @@ public class ProductEntity {
     private Set<CategoryEntity> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ProductVariantEntity> variants = new HashSet<>();
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ProductVariantTypeEntity> types = new HashSet<>();
+    private Set<ProductVariantEntity> productVariants = new HashSet<>();
 }
 

@@ -1,18 +1,15 @@
 package com.thanhan.ecommerce.sales.domain.model.catalog.product;
 
 import com.thanhan.ecommerce.common.primitives.Money;
+import com.thanhan.ecommerce.common.primitives.Quantity;
 import com.thanhan.ecommerce.sales.domain.model.catalog.category.vo.CategoryId;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.variants.ProductVariant;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.variants.vo.ProductVariantId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.variants.vo.VariantOption;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.VariantType;
+import com.thanhan.ecommerce.sales.domain.model.catalog.product.variants.vo.*;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.Description;
 import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.ProductId;
-import com.thanhan.ecommerce.sales.domain.model.catalog.product.vo.Title;
 import lombok.Getter;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Getter
 public class Product {
@@ -21,40 +18,54 @@ public class Product {
     private Title title;
     private Description description;
     private Set<CategoryId> categories;
-    private Set<VariantType> variantTypes;
-    private List<ProductVariantId> variantIds;
+    private List<ProductVariant> variants;
 
     public Product(ProductId id, Title title, Description description) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.categories = new HashSet<>();
-        this.variantTypes = new HashSet<>();
-        this.variantIds = new ArrayList<>();
+        this.variants = new ArrayList<>();
     }
 
-    public static Product create(Title title, Description description, Set<VariantType> types) {
+    /**
+     * Core business methods: addVariant(), removeVariant()
+     * Query methods: getVariantsByType(), findVariantBySku(), getAvailableVariants(), getTotalStock()
+     */
+
+    public static Product create(Title title, Description description) {
         Product p = new Product(ProductId.generate(), title, description);
-
-        if (types != null && !types.isEmpty()) {
-            p.variantTypes.addAll(types);
-        }
-
         /**
          *
-         * Publist Event ProductCreated
+         * Publish Event ProductCreated
          */
         return p;
     }
 
-    public void addVariantType(VariantType type) {
-        this.variantTypes.add(type);
+    public ProductVariant addProductVariant(VariantType type, VariantValue option,
+                                  Sku sku, Money price, Title title, Quantity stock) {
+
+        if (checkDuplicateVariantTypeAndOption(type, option)) {
+            throw new IllegalArgumentException("Variant type and option cannot be duplicated");
+        }
+
+        Map<VariantType, VariantValue> options = new HashMap<>();
+        options.put(type, option);
+
+        ProductVariant variant = new ProductVariant(ProductVariantId.generate(), this.id, sku, options,title, price, stock);
+        this.variants.add(variant);
+
+        /**
+         * Publish event add new ProductVariant
+         */
+        return variant;
     }
 
-    public void addVariant(ProductVariantId id) {
-        if (variantIds == null || variantIds.isEmpty())
-            throw new IllegalArgumentException("VariantId cannot be null ");
-        this.variantIds.add(id);
+    private boolean checkDuplicateVariantTypeAndOption(VariantType type, VariantValue option) {
+        return variants.stream()
+                .anyMatch(v ->
+                        option.equals(v.getVariantOptions().get(type)));
+
     }
 
     public void changeTitle(Title newTitle) {
@@ -71,8 +82,8 @@ public class Product {
         this.description = newDescription;
     }
 
-    public void removeProductVariant(ProductVariantId variantId) {
-        this.variantIds.removeIf(vId -> vId.equals(variantId));
+    public void removeProductVariant(ProductVariant productVariant) {
+        this.variants.removeIf(variant -> variant.getProductId().equals(productVariant.getProductId()));
     }
 
     public void categorize(CategoryId categoryId) {
@@ -81,5 +92,6 @@ public class Product {
         }
         categories.add(categoryId);
     }
+
 
 }

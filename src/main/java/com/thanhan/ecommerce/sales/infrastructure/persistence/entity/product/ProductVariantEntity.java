@@ -34,22 +34,20 @@ public class ProductVariantEntity {
 //    @Column(name = "currency", length = 3, nullable = false)
 //    private String currency;
 //
+    @Column(name="stock")
+    private Integer stock;
+
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    // Many-to-One với Product
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private ProductEntity product;
 
-    // One-to-Many với VariantOption
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "product_variant_options",
-            joinColumns = @JoinColumn(name = "variantId"))
-    private Set<ProductVariantOptionEntity> variantOptions = new HashSet<>();
-
+    @ManyToMany(mappedBy = "productVariants", fetch = FetchType.LAZY)
+    private Set<VariantValueEntity> variantValues = new HashSet<>();
 
 }

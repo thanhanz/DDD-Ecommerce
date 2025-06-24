@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Application Layer: CRUD, Search, Transfer to DTO -> Web
- *
+ * - Update: createProduct(), addProductVariant(), updateVariantStock()
  */
 public interface ProductAppService {
 
